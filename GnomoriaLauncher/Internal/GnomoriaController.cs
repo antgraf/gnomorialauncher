@@ -46,6 +46,7 @@ namespace GnomoriaLauncher.Internal
 				ModModule module = new ModModule();
 				try
 				{
+					module.FileName = file;
 					Assembly assembly = Assembly.LoadFrom(file);
 					IGnomoriaMod mod = CreateGnomoriaMod(assembly);
 					if(mod == null)
@@ -84,7 +85,7 @@ namespace GnomoriaLauncher.Internal
 		public ModModule[] GetActiveMods()
 		{
 			Validate();
-			return (from mod in Mods.Values where mod.Enabled && !mod.MissedDependecies && mod.Exception == null select mod).ToArray();
+			return (from mod in Mods.Values where mod.Enabled && mod.MissedDependecies == 0 && mod.Exception == null select mod).ToArray();
 		}
 
 		private IGnomoriaMod CreateGnomoriaMod(Assembly assembly)
@@ -117,15 +118,12 @@ namespace GnomoriaLauncher.Internal
 			// TODO: check for level 2+ dependencies
 			foreach(ModModule mod in Mods.Values)
 			{
-				mod.MissedDependecies = false;
+				mod.MissedDependecies = 0;
 				if(mod.Information.Dependencies != null)
 				{
-					foreach(Guid dependency in mod.Information.Dependencies)
+					foreach(Guid dependency in mod.Information.Dependencies.Where(dependency => !Mods.ContainsKey(dependency) || !Mods[dependency].Enabled || Mods[dependency].Exception != null))
 					{
-						if(!Mods.ContainsKey(dependency) || !Mods[dependency].Enabled || Mods[dependency].Exception != null)
-						{
-							mod.MissedDependecies = true;
-						}
+						mod.MissedDependecies++;
 					}
 				}
 			}
