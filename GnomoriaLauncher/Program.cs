@@ -7,21 +7,29 @@ namespace GnomoriaLauncher
 {
 	static class Program
 	{
+		private static GnomoriaController _controller;
+
 		static void Main()
 		{
-			Test();
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+			_controller = new GnomoriaController();
+			Application.Run(new MainForm(_controller));
+			if(_controller.Enabled)
+			{
+				Test();	// TODO
+			}
 		}
 
 		static void Test()
 		{
-			GnomoriaController controller = new GnomoriaController();
-			controller.ReadMods();
-			if(controller.FailedMods.Count > 0)
+			_controller.ReadMods();
+			if(_controller.FailedMods.Count > 0)
 			{
-				MessageBox.Show(string.Format("{0} mods weren't loaded.", controller.FailedMods.Count));
+				MessageBox.Show(string.Format("{0} mods weren't loaded.", _controller.FailedMods.Count));
 			}
-			ModModule[] mods = controller.GetActiveMods();
-			int disabled = controller.Mods.Count - mods.Length;
+			ModModule[] mods = _controller.GetActiveMods();
+			int disabled = _controller.Mods.Count - mods.Length;
 			if(disabled > 0)
 			{
 				MessageBox.Show(string.Format("{0} mods are disabled or throw an error.", disabled));
@@ -35,7 +43,7 @@ namespace GnomoriaLauncher
 #pragma warning disable 168
 					bool saved = mod.Mod.Configure(null, settings);
 #pragma warning restore 168
-					mod.Mod.Open(controller.Game, settings);
+					mod.Mod.Open(_controller.Game, settings);
 				}
 				catch(Exception e)
 				{
@@ -43,7 +51,7 @@ namespace GnomoriaLauncher
 				}
 			}
 
-			controller.Run();
+			_controller.Run();
 		}
 	}
 }

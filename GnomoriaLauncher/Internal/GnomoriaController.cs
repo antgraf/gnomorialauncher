@@ -19,6 +19,7 @@ namespace GnomoriaLauncher.Internal
 		public Dictionary<Guid, ModModule> Mods { get; private set; }
 		public List<string> FailedMods { get; private set; }
 		public IGnomoriaEvents Game { get { return _game; } }
+		public bool Enabled { get; set; }
 
 		public GnomoriaController()
 		{

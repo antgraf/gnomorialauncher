@@ -13,6 +13,8 @@ namespace ExampleMod
 {
 	public class HighSpeedButtonMod : IGnomoriaMod
 	{
+		private readonly Version _version = new Version(1, 0);
+
 		private const string CodeName = "HighSpeedButton";
 		private const float SpeedButtonLeftFactor = 1002f / 1920f;
 		private const float SpeedButtonTopFactor = 42f / 1080f;
@@ -32,6 +34,7 @@ namespace ExampleMod
 			return new ModInformation
 			{
 				CodeName = CodeName,
+				Version = _version,
 				Description = Resources.HighSpeedButtonMod_Description,
 				Id = _guid,
 				Icon = Resources.Lightning,
