@@ -41,7 +41,12 @@ namespace GnomoriaLauncher
 		{
 			if(_mod.Information.Icon != null)
 			{
-				picIcon.Image = _mod.Information.Icon;
+				Bitmap bmp = new Bitmap(picIcon.Image.Width, picIcon.Image.Height);
+				using(Graphics gr = Graphics.FromImage(bmp))
+				{
+					gr.DrawImage(_mod.Information.Icon, 0, 0, bmp.Width, bmp.Height);
+				}
+				picIcon.Image = bmp;
 			}
 			lblName.Text = string.Format(NameFormat, _mod.Information.CodeName, _mod.Information.Version.Major, _mod.Information.Version.Minor);
 			lblDescription.Text = _mod.Information.Description;

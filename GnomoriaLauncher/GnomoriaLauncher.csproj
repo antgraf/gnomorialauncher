@@ -64,6 +64,12 @@
 	<Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+	<Compile Include="AboutBox.cs">
+	  <SubType>Form</SubType>
+	</Compile>
+	<Compile Include="AboutBox.Designer.cs">
+	  <DependentUpon>AboutBox.cs</DependentUpon>
+	</Compile>
 	<Compile Include="Internal\GnomoriaController.cs" />
 	<Compile Include="Internal\GnomoriaEvents.cs" />
 	<Compile Include="Internal\ModModule.cs" />
@@ -72,6 +78,9 @@
 	</Compile>
 	<Compile Include="MainForm.Designer.cs">
 	  <DependentUpon>MainForm.cs</DependentUpon>
+	</Compile>
+	<Compile Include="MainForm.Logic.cs">
+	  <SubType>Form</SubType>
 	</Compile>
 	<Compile Include="ModInfoPanel.cs">
 	  <SubType>UserControl</SubType>
@@ -88,6 +97,9 @@
 	  <DesignTime>True</DesignTime>
 	  <DependentUpon>Resources.resx</DependentUpon>
 	</Compile>
+	<Compile Include="SplitButton.cs">
+	  <SubType>Component</SubType>
+	</Compile>
   </ItemGroup>
   <ItemGroup>
 	<ProjectReference Include="..\GnomoriaModSdk\GnomoriaModSdk.csproj">
@@ -96,6 +108,9 @@
 	</ProjectReference>
   </ItemGroup>
   <ItemGroup>
+	<EmbeddedResource Include="AboutBox.resx">
+	  <DependentUpon>AboutBox.cs</DependentUpon>
+	</EmbeddedResource>
 	<EmbeddedResource Include="MainForm.resx">
 	  <DependentUpon>MainForm.cs</DependentUpon>
 	</EmbeddedResource>

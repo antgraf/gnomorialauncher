@@ -85,7 +85,7 @@ namespace GnomoriaLauncher.Internal
 		public ModModule[] GetActiveMods()
 		{
 			Validate();
-			return (from mod in Mods.Values where mod.Enabled && mod.MissedDependecies == 0 && mod.Exception == null select mod).ToArray();
+			return (from mod in Mods.Values where mod.Exception == null select mod).ToArray();
 		}
 
 		private IGnomoriaMod CreateGnomoriaMod(Assembly assembly)

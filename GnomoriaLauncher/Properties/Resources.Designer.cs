@@ -79,5 +79,23 @@ namespace GnomoriaLauncher.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run.
+        /// </summary>
+        internal static string MainForm_UpdateRunButton_Run {
+            get {
+                return ResourceManager.GetString("MainForm_UpdateRunButton_Run", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run with Faarks mods.
+        /// </summary>
+        internal static string MainForm_UpdateRunButton_Run_with_Faarks_mods {
+            get {
+                return ResourceManager.GetString("MainForm_UpdateRunButton_Run_with_Faarks_mods", resourceCulture);
+            }
+        }
     }
 }

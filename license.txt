@@ -1,0 +1,4 @@
+SplitButton by wyDay
+http://wyday.com/splitbutton/
+BSD license
+
