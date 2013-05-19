@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using GnomoriaLauncher.Internal;
+using GnomoriaLauncher.Properties;
 using GnomoriaModSdk;
 
 namespace GnomoriaLauncher
@@ -17,11 +18,7 @@ namespace GnomoriaLauncher
 		private readonly Color _linkErrorColor = Color.DarkRed;
 		private Color? _linkDefaultColor;
 
-		public event EventHandler CheckedChanged
-		{
-			add { chkEnabled.CheckedChanged += value; }
-			remove { chkEnabled.CheckedChanged -= value; }
-		}
+		public event EventHandler CheckedChanged;
 
 		public bool Checked { get { return chkEnabled.Checked; } set { chkEnabled.Checked = value; } }
 
@@ -35,6 +32,25 @@ namespace GnomoriaLauncher
 			_settings = new SettingsManager(_mod.Information);
 			InitializeComponent();
 			RenderInfo();
+			chkEnabled.CheckedChanged += ChkEnabledCheckedChanged;
+		}
+
+		private void ChkEnabledCheckedChanged(object sender, EventArgs e)
+		{
+			_mod.Enabled = Checked;
+			ModSettings data = _settings.Load();
+			data.Enabled = _mod.Enabled;
+			_settings.Save(data);
+			OnCheckedChanged();
+		}
+
+		private void OnCheckedChanged()
+		{
+			EventHandler handler = CheckedChanged;
+			if(handler != null)
+			{
+				handler(this, EventArgs.Empty);
+			}
 		}
 
 		private void RenderInfo()
@@ -76,7 +92,14 @@ namespace GnomoriaLauncher
 
 		private void BtnSettingsClick(object sender, EventArgs e)
 		{
-			_mod.Mod.Configure(this, _settings);
+			try
+			{
+				_mod.Mod.Configure(this, _settings);
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(this, string.Format(Resources.Mod_returned_an_error, ex), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 
 		private void LblDependeciesLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

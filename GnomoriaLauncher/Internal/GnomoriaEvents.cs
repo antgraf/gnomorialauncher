@@ -6,7 +6,7 @@ namespace GnomoriaLauncher.Internal
 {
 	sealed class GnomoriaEvents : IGnomoriaEvents
 	{
-		private readonly GnomanEmpire _game = GnomanEmpire.Instance;
+		private GnomanEmpire _game;
 		private readonly UpdatableDrawableComponent _sniffer = new UpdatableDrawableComponent();
 
 		#region IGnomoriaEvents
@@ -33,6 +33,7 @@ namespace GnomoriaLauncher.Internal
 
 		public void Run()
 		{
+			_game = GnomanEmpire.Instance;
 			// TODO: subscribe to other events
 			_game.Components.Add(_sniffer);
 			_game.Run();

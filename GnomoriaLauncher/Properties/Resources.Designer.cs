@@ -71,12 +71,30 @@ namespace GnomoriaLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Gear {
             get {
                 object obj = ResourceManager.GetObject("Gear", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Mod load failed: {1}.
+        /// </summary>
+        internal static string MainForm_Run_Mod_load_failed {
+            get {
+                return ResourceManager.GetString("MainForm_Run_Mod_load_failed", resourceCulture);
             }
         }
         
@@ -95,6 +113,15 @@ namespace GnomoriaLauncher.Properties {
         internal static string MainForm_UpdateRunButton_Run_with_Faarks_mods {
             get {
                 return ResourceManager.GetString("MainForm_UpdateRunButton_Run_with_Faarks_mods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mod returned an error: {0}.
+        /// </summary>
+        internal static string Mod_returned_an_error {
+            get {
+                return ResourceManager.GetString("Mod_returned_an_error", resourceCulture);
             }
         }
     }

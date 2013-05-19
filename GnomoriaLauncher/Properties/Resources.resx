@@ -130,4 +130,13 @@
   <data name="MainForm_UpdateRunButton_Run_with_Faarks_mods" xml:space="preserve">
     <value>Run with Faarks mods</value>
   </data>
+  <data name="Mod_returned_an_error" xml:space="preserve">
+    <value>Mod returned an error: {0}</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="MainForm_Run_Mod_load_failed" xml:space="preserve">
+    <value>{0} Mod load failed: {1}</value>
+  </data>
 </root>
