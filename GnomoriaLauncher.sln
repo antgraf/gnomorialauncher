@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GnomoriaLauncher", "GnomoriaLauncher\GnomoriaLauncher.csproj", "{E6C51442-01ED-4757-9BE4-CF56B8DBC18D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GnomoriaLauncherFaarksMods", "GnomoriaLauncher\GnomoriaLauncherFaarksMods.csproj", "{E6C51442-01ED-4757-9BE4-CF56B8DBC18E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GnomoriaModSdk", "GnomoriaModSdk\GnomoriaModSdk.csproj", "{D427120D-16CC-488D-8449-2D0E16B9550F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleMod", "ExampleMod\ExampleMod.csproj", "{6FFC73B4-A18A-4AD0-A241-304AFABAF76F}"
@@ -17,6 +19,10 @@ Global
 		{E6C51442-01ED-4757-9BE4-CF56B8DBC18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6C51442-01ED-4757-9BE4-CF56B8DBC18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6C51442-01ED-4757-9BE4-CF56B8DBC18D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6C51442-01ED-4757-9BE4-CF56B8DBC18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6C51442-01ED-4757-9BE4-CF56B8DBC18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6C51442-01ED-4757-9BE4-CF56B8DBC18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6C51442-01ED-4757-9BE4-CF56B8DBC18E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D427120D-16CC-488D-8449-2D0E16B9550F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D427120D-16CC-488D-8449-2D0E16B9550F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D427120D-16CC-488D-8449-2D0E16B9550F}.Release|Any CPU.ActiveCfg = Release|Any CPU

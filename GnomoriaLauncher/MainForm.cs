@@ -68,5 +68,17 @@ namespace GnomoriaLauncher
 		{
 			Exit();
 		}
+
+		private void runToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			_faarksMods = false;
+			UpdateRunButton();
+		}
+
+		private void runWithToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			_faarksMods = true;
+			UpdateRunButton();
+		}
 	}
 }

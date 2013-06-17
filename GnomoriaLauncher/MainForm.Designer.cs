@@ -165,19 +165,21 @@
             this.runToolStripMenuItem,
             this.runWithToolStripMenuItem});
 			this.mnuRun.Name = "mnuRun";
-			this.mnuRun.Size = new System.Drawing.Size(191, 48);
+			this.mnuRun.Size = new System.Drawing.Size(191, 70);
 			// 
 			// runToolStripMenuItem
 			// 
 			this.runToolStripMenuItem.Name = "runToolStripMenuItem";
 			this.runToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
 			this.runToolStripMenuItem.Text = "&Run";
+			this.runToolStripMenuItem.Click += new System.EventHandler(this.runToolStripMenuItem_Click);
 			// 
 			// runWithToolStripMenuItem
 			// 
 			this.runWithToolStripMenuItem.Name = "runWithToolStripMenuItem";
 			this.runWithToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
 			this.runWithToolStripMenuItem.Text = "Run with &Faarks mods";
+			this.runWithToolStripMenuItem.Click += new System.EventHandler(this.runWithToolStripMenuItem_Click);
 			// 
 			// btnCancel
 			// 

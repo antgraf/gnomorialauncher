@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
+using System.IO;
+using System.Windows.Forms;
 using GnomoriaLauncher.Internal;
-using GnomoriaLauncher.Properties;
 
 namespace GnomoriaLauncher
 {
 	partial class MainForm
 	{
-		private const string GnomoriaFilename = "Gnomoria.exe";
-		private const string GnomoriaModdedFilename = "GnomoriaModded.exe";
+		private const string ModdedLauncherFilename = "GnomoriaLauncherFaarksMods.exe";
 
 		private readonly List<ModInfoPanel> _panels = new List<ModInfoPanel>();
 
@@ -28,25 +27,10 @@ namespace GnomoriaLauncher
 
 		private void Run()
 		{
-			string exe = _faarksMods ? GnomoriaModdedFilename : GnomoriaFilename;
-			ModModule[] mods = _controller.GetActiveMods();
-			foreach(ModModule mod in mods)
-			{
-				if(mod.Enabled && mod.Exception == null && mod.MissedDependecies == 0)
-				{
-					try
-					{
-						mod.Mod.Open(_controller.Game, new SettingsManager(mod.Information));
-					}
-					catch(Exception e)
-					{
-						lblStatus.Text = string.Format(Resources.MainForm_Run_Mod_load_failed, mod.Information.CodeName, e);
-					}
-				}
-			}
-
-			// TODO: Support Faarks mods
-			new Thread(() => _controller.Run()).Start();
+			string self = Application.ExecutablePath;
+			string selfModded = Path.Combine(Application.StartupPath, ModdedLauncherFilename);
+			Process.Start(_faarksMods ? selfModded : self, "-execute");
+			Application.Exit();
 		}
 
 		private ModInfoPanel CreateModPanel(ModModule mod)

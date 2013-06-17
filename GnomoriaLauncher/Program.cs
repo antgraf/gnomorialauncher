@@ -9,19 +9,22 @@ namespace GnomoriaLauncher
 	{
 		private static GnomoriaController _controller;
 
-		static void Main()
+		static void Main(string[] args)
 		{
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
 			_controller = new GnomoriaController();
-			Application.Run(new MainForm(_controller));
-			if(_controller.Enabled)
+			if(args == null || args.Length != 1)
 			{
-				Test();	// TODO
+				Application.EnableVisualStyles();
+				Application.SetCompatibleTextRenderingDefault(false);
+				Application.Run(new MainForm(_controller));
+			}
+			else //if(_controller.Enabled)
+			{
+				Run();
 			}
 		}
 
-		static void Test()
+		static void Run()
 		{
 			_controller.ReadMods();
 			if(_controller.FailedMods.Count > 0)
@@ -40,9 +43,6 @@ namespace GnomoriaLauncher
 				try
 				{
 					ISettingsManager settings = new SettingsManager(mod.Information);
-#pragma warning disable 168
-					bool saved = mod.Mod.Configure(null, settings);
-#pragma warning restore 168
 					mod.Mod.Open(_controller.Game, settings);
 				}
 				catch(Exception e)
